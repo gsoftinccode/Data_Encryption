@@ -1,0 +1,74 @@
+import string  as s
+import random
+para = "Loooting continues everyday in down town Johannesburg"
+newSent = " "
+vowels= "aeiou"
+dic_1={}
+dic_2={}
+count=0
+#Encrypting all vowels in the message
+for i in para:
+        count +=1
+
+        if i in vowels:
+            dic_2[count]= i
+            i= ''.join(random.sample((s.ascii_letters+s.digits), k=5))
+            dic_1[count]= i
+            newSent += i
+            continue
+        newSent += i
+print(newSent)
+    # print(count)
+    # print(dic)
+    # print(dic2)
+
+# Decrypting the message
+for i, j in dic_1.items():
+
+        for a,b in dic_2.items():
+            if i==a:
+                print (j,b)
+                newSent = newSent.replace(j,b)
+
+print(newSent)
+
+#### Kabelo Version
+import string  as s
+import random
+
+myMessage = 'Looting continues everyday in down town Johannesburg'
+vowels = 'aeiou'
+translated = ''
+dic_1 = {}
+dic_2 = {}
+count = 0
+count_2 = 0
+
+for symbol in myMessage:
+    count += 1
+    if symbol in vowels:
+        dic_2[count] = symbol
+        symbol = ''.join(random.sample((s.ascii_letters + s.digits), k=5))
+        dic_1[count] = symbol
+        translated += symbol
+        continue
+    translated += symbol
+    count_2 += 1
+
+print('Encrypted Message:')
+print('__________________________________________________________________________')
+print(translated)
+print()
+print('Dictionary 1: ', dic_1)
+print('Dictionary 2: ', dic_2)
+print('___________________________________________________________________________')
+
+# ________________________________________________________
+print('Decrypted Message')
+
+for i, j in dic_2.items():
+    for a, b in dic_1.items():
+        if i == a:
+            # print (j,b)
+            translated = translated.replace(b, j)
+print(translated)
